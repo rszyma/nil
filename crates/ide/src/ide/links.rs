@@ -202,19 +202,23 @@ mod tests {
         check(
             r#"[
                 github:NixOS/nixpkgs
+                "github:NixOS/nixpkgs/"
                 "github:NixOS/nixpkgs/nixos-22.05"
                 "github:NixOS/nixpkgs/e576e3c9cf9bad747afcddd9e34f51d18c855b4e"
                 "github:NixOS/nixpkgs/e576e3c"
                 "github:NixOS/nixpkgs/pull/190594/head"
+                "github:oxalica/nil/feat/inlay-hints"
                 "file:///root"
                 "https://example.com?foo=1#bar"
             ]"#,
             expect![[r#"
                 github:NixOS/nixpkgs -> https://github.com/NixOS/nixpkgs: https://github.com/NixOS/nixpkgs
+                "github:NixOS/nixpkgs/" -> https://github.com/NixOS/nixpkgs: https://github.com/NixOS/nixpkgs
                 "github:NixOS/nixpkgs/nixos-22.05" -> https://github.com/NixOS/nixpkgs/tree/nixos-22.05: https://github.com/NixOS/nixpkgs/tree/nixos-22.05
                 "github:NixOS/nixpkgs/e576e3c9cf9bad747afcddd9e34f51d18c855b4e" -> https://github.com/NixOS/nixpkgs/tree/e576e3c9cf9bad747afcddd9e34f51d18c855b4e: https://github.com/NixOS/nixpkgs/tree/e576e3c9cf9bad747afcddd9e34f51d18c855b4e
                 "github:NixOS/nixpkgs/e576e3c" -> https://github.com/NixOS/nixpkgs/tree/e576e3c: https://github.com/NixOS/nixpkgs/tree/e576e3c
                 "github:NixOS/nixpkgs/pull/190594/head" -> https://github.com/NixOS/nixpkgs/pull/190594: https://github.com/NixOS/nixpkgs/pull/190594
+                "github:oxalica/nil/feat/inlay-hints" -> https://github.com/oxalica/nil/tree/feat/inlay-hints: https://github.com/oxalica/nil/tree/feat/inlay-hints
                 "https://example.com?foo=1#bar" -> https://example.com/?foo=1#bar: https://example.com/?foo=1#bar
             "#]],
         );
